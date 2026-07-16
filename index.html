@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J Jaya Mithira | AI & DS Engineer Portfolio</title>
+    <style>
+        /* Modern Reset and Theme Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #090514;
+            --card-bg: #130f26;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #a855f7; /* New Vibrant Purple Shade */
+            --accent-hover: #c084fc;
+            --border: #2c1a4d;
+            --table-header-line: #44257d;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation - Flexbox Layout */
+        header {
+            background-color: rgba(9, 5, 20, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Hero Section - Flexbox Layout */
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            min-height: 70vh;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-info-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-info-list a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Circular Frame with Purple Border outer ring */
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            outline: 12px solid rgba(168, 85, 247, 0.15);
+            box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.3);
+        }
+
+        /* Skills Section Styles */
+        .skills-category {
+            margin-bottom: 2rem;
+        }
+
+        .skills-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skills-list li {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        /* Projects - CSS Grid Layout */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .card .subtitle {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card ul {
+            list-style-position: inside;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Experience and Education Tables Data Layout */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            padding: 1rem 0;
+            font-weight: 600;
+            border-bottom: 2px solid var(--table-header-line);
+        }
+
+        td {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+            font-size: 1rem;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .qualification-title {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .exp-details {
+            list-style-type: disc;
+            margin-left: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .exp-details li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            #hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+                padding-top: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info-list {
+                align-items: center;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            th, td {
+                padding: 1rem 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation Section (Flexbox Layout) -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">JJM</a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content wrapper containing Semantic Sections -->
+    <main>
+        <!-- About Section (Flexbox Layout) -->
+        <section id="about">
+            <div id="hero">
+                <div class="hero-text">
+                    <h1>J Jaya Mithira</h1>
+                    <p>Artificial Intelligence &amp; Data Science Engineer specializing in Machine Learning, Intelligent Code Tooling, and Web Development.</p>
+                    
+                    <ul class="contact-info-list">
+                        <li><strong>Email:</strong> <a href="mailto:jayamithirajp@gmail.com">jayamithirajp@gmail.com</a></li>
+                        <li><strong>Phone:</strong> <a href="tel:+917530081942">+91 7530081942</a></li>
+                    </ul>
+                    
+                    <a href="#projects" class="btn">View My Work</a>
+                </div>
+                <div class="hero-image">
+                    <img src="myphoto.jpeg" alt="J Jaya Mithira Portfolio Image" class="profile-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            
+            <div class="skills-category">
+                <h3>Programming</h3>
+                <ul class="skills-list">
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>C</li>
+                    <li>C++</li>
+                    <li>TypeScript</li>
+                </ul>
+            </div>
+
+            <div class="skills-category">
+                <h3>Databases &amp; Querying</h3>
+                <ul class="skills-list">
+                    <li>SQL</li>
+                    <li>MySQL</li>
+                </ul>
+            </div>
+
+            <div class="skills-category">
+                <h3>Frameworks, Libraries &amp; Concepts</h3>
+                <ul class="skills-list">
+                    <li>Object-Oriented Programming (OOP)</li>
+                    <li>Data Structures &amp; Algorithms (DSA)</li>
+                    <li>Machine Learning</li>
+                    <li>Deep Learning Fundamentals</li>
+                    <li>Federated Learning Basics</li>
+                    <li>Database Management Systems (DBMS)</li>
+                    <li>Retrieval-Augmented Generation (RAG)</li>
+                    <li>Large Language Models (LLMs)</li>
+                    <li>Tool Calling</li>
+                    <li>VS Code Extension API</li>
+                    <li>Problem Solving</li>
+                    <li>Documentation</li>
+                    <li>Team Collaboration</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Experience Section (Table Layout) -->
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Role &amp; Company</th>
+                            <th style="width: 55%;">Key Contribution</th>
+                            <th style="width: 15%;">Period</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="qualification-title">AI-Powered VS Code Coding Assistant</span><br>
+                                <span style="font-size: 0.85rem; color: var(--accent)">Zoho Corporation</span>
+                            </td>
+                            <td>
+                                <ul class="exp-details">
+                                    <li>Built an intelligent coding assistant as a VS Code extension using RAG and tool calling to improve developer productivity.</li>
+                                    <li>Enabled contextual code understanding through document retrieval and LLM-based response generation.</li>
+                                    <li>Developed features for code explanation, debugging support, and code generation within the VS Code environment.</li>
+                                    <li>Utilized TypeScript, VS Code Extension API, and modern AI technologies.</li>
+                                </ul>
+                            </td>
+                            <td>May 2026 &ndash;<br>June 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Projects Section (CSS Grid Layout) -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="grid-layout">
+                
+                <article class="card">
+                    <h3>FamLink</h3>
+                    <div class="subtitle">JavaScript | UML | Database Design | Web Development</div>
+                    <p style="font-size: 0.85rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--accent);">Year: 2026</p>
+                    <ul>
+                        <li>Developed a web-based child adoption platform with secure role-based access and structured workflow management.</li>
+                        <li>Designed relational database and system architecture to manage child profiles, applications, and post-adoption follow-ups.</li>
+                        <li>Built responsive user interface supporting multi-user dashboards for parents, agencies, and counselors.</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <h3>Hospital Management System</h3>
+                    <div class="subtitle">Python tkinter | SQL</div>
+                    <p style="font-size: 0.85rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--accent);">Year: 2023</p>
+                    <ul>
+                        <li>Developed desktop-based Hospital Management System using Python, Tkinter and SQL to maintain a centralized database of patient records and enable efficient prescription entry and printing.</li>
+                        <li>Designed an interactive dashboard to display doctor-wise statistics and hospital activity insights, improving data accessibility and operational tracking.</li>
+                    </ul>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Education Section (Tabular Layout) -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Qualification</th>
+                            <th style="width: 35%;">Institution</th>
+                            <th style="width: 15%;">Duration</th>
+                            <th style="width: 15%;">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="qualification-title">B.Tech, AI &amp; Data Science</td>
+                            <td>Shiv Nadar University</td>
+                            <td>2024 &ndash; 2028</td>
+                            <td style="font-weight: 500;">CGPA 8.27</td>
+                        </tr>
+                        <tr>
+                            <td class="qualification-title">Higher Secondary (Class XII), CBSE</td>
+                            <td>DAV School, Adambakkam, Chennai</td>
+                            <td>2024</td>
+                            <td style="font-weight: 500;">94.4%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Element -->
+    <footer>
+        <p>&copy; 2026 J Jaya Mithira. Built with semantic HTML &amp; modern CSS.</p>
+    </footer>
+
+</body>
+</html>
